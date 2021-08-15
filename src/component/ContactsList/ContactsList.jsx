@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { onDelete } from '../../redux/slices/todo.js';
+// import { fetchContact, deleteContact } from '../../redux/operation.js';
 import { Contact, ContactItem, BtnDelete, Text } from './ContactsList.styles';
 import { AiOutlineDelete, AiOutlineUser } from 'react-icons/ai';
-import * as actions from "../../redux/actions.js";
-import { getVisibleContacts } from "../../redux/selectors.js";
+// import * as actions from "../../redux/actions.js";
+// import { getVisibleContacts } from "../../redux/selectors.js";
+import { operation, selectors } from "../../redux";
 
 
 const ContactsList = () => {
-    // const contacts = useSelector((state) => state.todo);
-    const contacts = useSelector(getVisibleContacts);
+    const contacts = useSelector(selectors.getVisibleContacts);
     const dispatch = useDispatch();
-    const onDeleteContact = (id) => dispatch(actions.deleteContact(id));
+    const onDeleteContact = (id) => {
+        dispatch(operation.deleteContact(id));
+        console.log(id);
+    }
+    useEffect(() => {
+        dispatch(operation.fetchContact())
+    }, [dispatch])
+   
     return (
         <Contact>
             {contacts.map(({ id, name, number }) => (
-                <ContactItem key={id}><AiOutlineUser />
-                    <Text>{name}: {number}</Text>
+                <ContactItem key={id}>
+                    <span>
+                        <AiOutlineUser />
+                        {name}:
+                    </span>
+                    
+                    
+                    <span>{number}</span>
                     <BtnDelete onClick={() => onDeleteContact(id)}><AiOutlineDelete /></BtnDelete>
                 </ContactItem>
             ))}
