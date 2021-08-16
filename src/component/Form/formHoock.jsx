@@ -2,15 +2,11 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { addContact } from '../../redux/operation';
 import { Input, TitleSecond, Button } from './Form.styles';
 import { FiUser, FiPhoneCall } from 'react-icons/fi';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import { getContacts } from "../../redux/selectors.js";
-// import * as actions from '../../redux/actions.js';
 import { operation, selectors } from "../../redux";
 
-// import PropTypes from 'prop-types';
 
 
 export default function Form() {

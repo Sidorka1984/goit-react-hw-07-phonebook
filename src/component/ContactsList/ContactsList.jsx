@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { fetchContact, deleteContact } from '../../redux/operation.js';
-import { Contact, ContactItem, BtnDelete, Text } from './ContactsList.styles';
+import { Contact, ContactItem, BtnDelete } from './ContactsList.styles';
 import { AiOutlineDelete, AiOutlineUser } from 'react-icons/ai';
 // import * as actions from "../../redux/actions.js";
 // import { getVisibleContacts } from "../../redux/selectors.js";
